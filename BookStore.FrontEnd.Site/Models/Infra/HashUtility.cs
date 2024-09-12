@@ -11,7 +11,7 @@ namespace BookStore.FrontEnd.Site.Models.Infra
     {
         public static string GetSalt()
         {
-            return System.Configuration.ConfigurationManager.AppSettings["Salt"];
+            return System.Configuration.ConfigurationManager.AppSettings["Salt"]; //去AppSetting取得salt
         }
 
         public static string ToSHA256(string plainText, string salt = null)
@@ -21,7 +21,7 @@ namespace BookStore.FrontEnd.Site.Models.Infra
             using (var mySHA256 = SHA256.Create())
             {
                 var bytes = Encoding.UTF8.GetBytes(plainText + salt); // 把密碼加上 salt 並轉成 byte[]
-                var hash = mySHA256.ComputeHash(bytes);//進行SHA256加密
+                var hash = mySHA256.ComputeHash(bytes);//進行SHA256加密(hash是加密過後的byte)
 
                 var sb = new StringBuilder(); //用來存放加密後的字串
                 foreach (var b in hash)
