@@ -19,6 +19,6 @@ namespace BookStore.FrontEnd.Site.Models
 
         public string EncryptedPassword { get; set; }
 
-        public bool IsConfirmd { get; set; }
+        public bool IsConfirmed { get; set; }
     }
 }

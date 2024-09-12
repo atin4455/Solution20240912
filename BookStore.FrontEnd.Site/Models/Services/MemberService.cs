@@ -1,4 +1,6 @@
 ﻿using BookStore.FrontEnd.Site.Models.Infra;
+using BookStore.FrontEnd.Site.Models.interfaces;
+using BookStore.FrontEnd.Site.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +12,18 @@ namespace BookStore.FrontEnd.Site.Models.Services
     {
         private IMemberRepository _repo;
 
-        public MemberService(IMemberRepository repo)
-        {
-            _repo = new IMemberRepository();
-        }
 
         public MemberService()
         {
+            _repo = new MemberRepository();
+        }
+
+        public MemberService(IMemberRepository repo)
+        {
             _repo = repo;
         }
+
+
 
         public void Register(RegisterDto dto)
         {
