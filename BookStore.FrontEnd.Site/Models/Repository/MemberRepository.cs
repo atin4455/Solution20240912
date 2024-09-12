@@ -37,10 +37,6 @@ namespace BookStore.FrontEnd.Site.Models.Repository
 
         }
 
-        public void create(RegisterDto dto)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool IsAccountExist(string account)
         {

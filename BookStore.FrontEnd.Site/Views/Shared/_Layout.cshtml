@@ -22,6 +22,10 @@
                     <li>@Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("登入", "Login", "Members", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("註冊會員", "Register", "Members", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
             </div>
         </div>
     </nav>

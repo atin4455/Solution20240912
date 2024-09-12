@@ -17,6 +17,7 @@ namespace BookStore.FrontEnd.Site.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Register(RegisterVm vm)
         {
             if (!ModelState.IsValid) return View(vm);

@@ -8,7 +8,7 @@ namespace BookStore.FrontEnd.Site.Models.interfaces
 {
     public interface IMemberRepository
     {
-        void create(RegisterDto dto);
+        void Create(RegisterDto dto);
         bool IsAccountExist(string account);
     }
 }
