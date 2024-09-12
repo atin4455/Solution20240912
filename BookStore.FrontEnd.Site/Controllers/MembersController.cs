@@ -34,7 +34,7 @@ namespace BookStore.FrontEnd.Site.Controllers
 
         public ActionResult ActiveRegister(int memberId,string confirmCode)
         {
-            //Result result = HandleActiveRegister(memberId,confirmCode);
+            Result result = HandleActiveRegister(memberId, confirmCode);
 
             //if (result.IsSuccess) 
             //{
@@ -44,20 +44,24 @@ namespace BookStore.FrontEnd.Site.Controllers
             return View();
         }
 
-private Result HandleActiveRegister(int memberId, string confirmCode)
-{
-    try
-    {
-        var service = new MemberService();
-        service.ActiveRegister(memberId, confirmCode);
 
-        return Result.Success();
-    }
-    catch (Exception ex)
-    {
-        return Result.Fail(ex.Message);
-    }
-}
+        private Result HandleActiveRegister(int memberId, string confirmCode)
+        {
+            try
+            {
+                var service = new MemberService();
+                service.ActiveRegister(memberId, confirmCode);
+
+                return Result.Success();
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+
+
+        }
+
 
 
         private Result HandleRegister(RegisterVm vm)
