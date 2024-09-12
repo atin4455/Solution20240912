@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 
 namespace BookStore.FrontEnd.Site.Models.ViewModels
@@ -70,6 +71,20 @@ namespace BookStore.FrontEnd.Site.Models.ViewModels
                 IsConfirmed = false, //新會員預設狀態是:未確認
                 ConfirmCode = confirmCode
             };
+        }
+
+        public static RegisterDto ToDto(this RegisterVm vm)
+        {
+            return new RegisterDto
+            {
+                Id = vm.Id,
+                Account = vm.Account,
+                Password = vm.Password,
+                Email = vm.Email,
+                Name = vm.Name,
+                Mobile = vm.Mobile
+            };
+
         }
     }
 }
