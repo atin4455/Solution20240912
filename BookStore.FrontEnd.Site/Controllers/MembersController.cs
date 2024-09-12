@@ -32,6 +32,34 @@ namespace BookStore.FrontEnd.Site.Controllers
             //return RedirectToAction("RegisterConfirm");//如果想要轉到某action,就這麼寫
         }
 
+        public ActionResult ActiveRegister(int memberId,string confirmCode)
+        {
+            //Result result = HandleActiveRegister(memberId,confirmCode);
+
+            //if (result.IsSuccess) 
+            //{
+            //    ModelState.AddModelError(string.Empty, result.ErrorMessage);
+            //    return View();
+            //}
+            return View();
+        }
+
+private Result HandleActiveRegister(int memberId, string confirmCode)
+{
+    try
+    {
+        var service = new MemberService();
+        service.ActiveRegister(memberId, confirmCode);
+
+        return Result.Success();
+    }
+    catch (Exception ex)
+    {
+        return Result.Fail(ex.Message);
+    }
+}
+
+
         private Result HandleRegister(RegisterVm vm)
         {
             // 在這裡，可以自行決定要叫用 EF or Service object 進行 create member 的工作

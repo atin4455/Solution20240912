@@ -38,6 +38,35 @@ namespace BookStore.FrontEnd.Site.Models.Repository
         }
 
 
+        public MemberDto Get(int memberId)
+        {
+            var member = _db.Members.FirstOrDefault(x => x.Id == memberId);
+            if (member == null) return null;
+
+            return new MemberDto
+            {
+                Id = member.Id,
+                Account = member.Account,
+                Email = member.Email,
+                EncryptedPassword = member.EncryptedPassword,
+                Name = member.Name,
+                Mobile = member.Mobile,
+                ConfirmCode = member.ConfirmCode,
+                IsConfirmed = member.IsConfirmed
+            };
+        }
+
+        public void Active(int memberId) 
+        { 
+            var member =_db.Members.FirstOrDefault(x => x.Id == memberId);
+            member.IsConfirmed = true;
+            member.ConfirmCode = null;
+
+            _db.SaveChanges();
+        }
+
+
+
         public bool IsAccountExist(string account)
         {
             var member = _db.Members.FirstOrDefault(x => x.Account == account);

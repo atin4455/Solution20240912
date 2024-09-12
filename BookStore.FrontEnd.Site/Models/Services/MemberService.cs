@@ -46,5 +46,21 @@ namespace BookStore.FrontEnd.Site.Models.Services
 
         }
 
+
+        public void ActiveRegister(int memberId, string confirmCode)
+        {
+            // 判斷 memberId 和 confirmCode 是否正確，正確就將會員狀態改為已啟用
+            MemberDto dto = _repo.Get(memberId);
+            if (dto == null) throw new Exception("會員不存在");
+            if (dto.ConfirmCode != confirmCode) throw new Exception("驗證碼錯誤");
+            if (dto.IsConfirmed.HasValue && dto.IsConfirmed.Value)
+            {
+                throw new Exception("會員已啟用");
+            }
+
+            // 啟用會員
+            _repo.Active(memberId);
+        }
+
     }
 }
