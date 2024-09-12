@@ -63,5 +63,7 @@ namespace BookStore.FrontEnd.Site.Models.EFModels
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
         }
+
+        public System.Data.Entity.DbSet<BookStore.FrontEnd.Site.Models.ViewModels.RegisterVm> RegisterVms { get; set; }
     }
 }
