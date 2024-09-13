@@ -57,22 +57,22 @@ namespace BookStore.FrontEnd.Site.Controllers
         [HttpPost]
         public ActionResult Login(LoginVM vm)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 Result result = HandleLogin(vm);
                 if (result.IsSuccess)
                 {
                     (string url, HttpCookie cookie) = ProcessLogin(vm.Account);
-                    Response.Cookies.Add(cookie);
                     return Redirect(url);
                 }
-            }
-            ModelState.AddModelError(
+                ModelState.AddModelError(
                 string.Empty,
-                result.ErrorMessage
-            );
+                result.ErrorMessage);
 
-            return View(vm);
+
+            }
+            return View();
+
         }
 
         private Result HandleLogin(LoginVM vm)
