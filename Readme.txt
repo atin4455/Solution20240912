@@ -20,19 +20,29 @@ modify _Layout.cshtml,add Register link
     add ActiveRegister.cshtml
 
 //第一天進度
-[working on]實作登入登出功能
-modify web.config,add<authentication mode="Forms">
+[V] 實作登入登出功能
+只允許帳密正確且開通會員才允許登入
+
+modify web.config, add <authentication mode="Forms">
 add LoginVm, LoginDto
-modify MembersController, add Login, Logout Actions
+
+
+**安裝 AutoMapper package
+add Models/MappingProfile.cs
+modify Global.asax.cs, add Mapper config
+
+modify MemberController, add Login, Logout Actions
 add Login.cshtml
+modify _Layout.cshtml, add Login, Logout links
+modify 將About改為需登入才可檢視
 
-** 安裝 AutoMapper package
-   add Models/MappingProfile.cs
-   modify Global.asax.cs, add Mapper config
+modify MemberService, IMemberRepository, 新增Login相關成員
 
-modify
-modify _Layout.cshtml, add Login ,Logout links
-modify 將 About 改成需要登入才能檢視
+[working on] 要做 Members/Index 會員中心頁，登入成功之後，導向此頁
+modify MembersController, add Index action
+add Views/Members/Index.cshtml ,填入二個超連結:"修改個人基本資料","重設密碼"
 
-[]要做 Members/Index 會員中心頁，登入成功之後，導向此頁
-[]針對新會員暫時沒做發信功能
+[] 實作 修改個人基本資料
+[] 實作 變更密碼
+
+[] 針對新會員暫時沒做發佈信功能

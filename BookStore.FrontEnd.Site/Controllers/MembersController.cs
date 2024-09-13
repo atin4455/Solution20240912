@@ -16,6 +16,12 @@ namespace BookStore.FrontEnd.Site.Controllers
 {
     public class MembersController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+
         // GET: Members
         public ActionResult Register()
         {
@@ -63,7 +69,9 @@ namespace BookStore.FrontEnd.Site.Controllers
                 if (result.IsSuccess)
                 {
                     (string url, HttpCookie cookie) = ProcessLogin(vm.Account);
+
                     Response.Cookies.Add(cookie);
+
                     return Redirect(url);
                 }
                 ModelState.AddModelError(
