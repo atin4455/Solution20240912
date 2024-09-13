@@ -13,5 +13,6 @@ namespace BookStore.FrontEnd.Site.Models.interfaces
         MemberDto Get(int memberId);
         MemberDto Get(string account);
         bool IsAccountExist(string account);
+        void Update(MemberDto dto);
     }
 }

@@ -20,6 +20,9 @@ namespace BookStore.FrontEnd.Site.Models
 
             CreateMap<MemberDto, EditProfileVm>();
 
+            CreateMap<EditProfileVm, EditProfileDto>();
+
+            CreateMap<MemberDto, Member>();
         }
     }
 }
