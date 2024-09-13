@@ -1,12 +1,16 @@
 ﻿using BookStore.FrontEnd.Site.Models;
+using BookStore.FrontEnd.Site.Models.Dtos;
 using BookStore.FrontEnd.Site.Models.Services;
 using BookStore.FrontEnd.Site.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
+using System.Web.Http.Results;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 
 namespace BookStore.FrontEnd.Site.Controllers
 {
@@ -50,9 +54,44 @@ namespace BookStore.FrontEnd.Site.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult Login(LoginVM vm)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Result result = HandleLogin(vm);
+                if (result.IsSuccess)
+                {
+                    (string url, HttpCookie cookie) = ProcessLogin(vm.Account);
+                    Response.Cookies.Add(cookie);
+                    return Redirect(url);
+                }
+            }
+            ModelState.AddModelError(
+                string.Empty,
+                result.ErrorMessage
+            );
+
+            return View(vm);
+        }
+
+        private Result HandleLogin(LoginVM vm)
+        {
+            try
+            {
+                var service = new MemberService();
+
+                LoginDto dto = WebApiApplication._mapper.Map<LoginDto>(vm); //automapper
+
+                Result validateResult = service.ValidateLogin(dto);
+
+                return validateResult;
+
+            }
+            catch (Exception ex) 
+            {
+                return Result.Fail(ex.Message);
+            }
         }
 
         public ActionResult Logout()

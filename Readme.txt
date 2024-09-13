@@ -30,7 +30,7 @@ add Login.cshtml
    add Models/MappingProfile.cs
    modify Global.asax.cs, add Mapper config
 
-
+modify
 modify _Layout.cshtml, add Login ,Logout links
 modify 將 About 改成需要登入才能檢視
 
