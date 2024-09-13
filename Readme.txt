@@ -50,6 +50,11 @@ add EditProfileVm,EditProfileDto classes
     增加Mapping config
 add EditProfile view page
 
-[] 實作 變更密碼
+[working on] 實作 變更密碼
+modify MembersController,add ChangePassword action , 要加[Authorize]
+add ChangePassowrdVm,ChangePasswordDto classes
+    增加Mapping config
+add ChangePassword view page
+modify MemberService ,add ChangePassword method
 
 [] 針對新會員暫時沒做發佈信功能
