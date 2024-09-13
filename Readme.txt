@@ -43,7 +43,7 @@ modify MemberService, IMemberRepository, 新增Login相關成員
 modify MembersController, add Index action
 add Views/Members/Index.cshtml(空白範本),填入二個超連結:"修改個人基本資料","重設密碼"
 
-[working on] 實作 修改個人基本資料
+[v] 實作 修改個人基本資料
 modify MembersController,add EditProfile action , 要加[Authorize]
 add EditProfileVm,EditProfileDto classes
     不允許修改 account,password
