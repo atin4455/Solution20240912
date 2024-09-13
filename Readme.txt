@@ -19,5 +19,14 @@ modify _Layout.cshtml,add Register link
         update isConfirmed=1, confirmCode = null
     add ActiveRegister.cshtml
 
+//第一天進度
+[working on]實作登入登出功能
+modify web.config,add<authentication mode="Forms">
+add LoginVm, LoginDto
+modify MembersController, add Login, Logout Actions
+add Login.cshtml
+modify _Layout.cshtml, add Login ,Logout links
+modify 將 About 改成需要登入才能檢視
 
+[]要做 Members/Index 會員中心頁，登入成功之後，導向此頁
 []針對新會員暫時沒做發信功能
