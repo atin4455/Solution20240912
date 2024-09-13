@@ -1,10 +1,12 @@
-﻿using BookStore.FrontEnd.Site.Models.Infra;
+﻿using BookStore.FrontEnd.Site.Models.Dtos;
+using BookStore.FrontEnd.Site.Models.Infra;
 using BookStore.FrontEnd.Site.Models.interfaces;
 using BookStore.FrontEnd.Site.Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http.Results;
 
 namespace BookStore.FrontEnd.Site.Models.Services
 {
@@ -62,5 +64,23 @@ namespace BookStore.FrontEnd.Site.Models.Services
             _repo.Active(memberId);
         }
 
+        internal Result ValidateLogin(LoginDto dto)
+        {
+            //找出user
+            MemberDto member = _repo.Get(dto.Account);
+            if (member == null) return Result.Fail("帳號或密碼錯誤");//帳號不存在
+                                                              //是否已開通
+            if (!member.IsConfirmed.HasValue || member.IsConfirmed.Value==false)
+            {
+                return Result.Fail("帳號尚未開通");
+            }
+            //將密碼雜湊比對
+            string hashPassword=HashUtility.ToSHA256(dto.Password);
+            bool isPasswordCorrect=(hashPassword.CompareTo(member.EncryptedPassword) == 0);
+            //回傳結果
+            return isPasswordCorrect
+                ? Result.Success()
+                : Result.Fail("帳號或密碼錯誤");//密碼錯誤
+        }
     }
 }
