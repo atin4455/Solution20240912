@@ -16,6 +16,7 @@ namespace BookStore.FrontEnd.Site.Controllers
 {
     public class MembersController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             return View();

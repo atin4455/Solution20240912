@@ -38,11 +38,18 @@ modify 將About改為需登入才可檢視
 
 modify MemberService, IMemberRepository, 新增Login相關成員
 
-[working on] 要做 Members/Index 會員中心頁，登入成功之後，導向此頁
+[V] 要做 Members/Index 會員中心頁，登入成功之後，導向此頁
+要加[Authorize]
 modify MembersController, add Index action
-add Views/Members/Index.cshtml ,填入二個超連結:"修改個人基本資料","重設密碼"
+add Views/Members/Index.cshtml(空白範本),填入二個超連結:"修改個人基本資料","重設密碼"
 
-[] 實作 修改個人基本資料
+[working on] 實作 修改個人基本資料
+modify MembersController,add EditProfile action , 要加[Authorize]
+add EditProfileVm,EditProfileDto classes
+    不允許修改 account,password
+    增加Mapping config
+add EditProfile view page
+
 [] 實作 變更密碼
 
 [] 針對新會員暫時沒做發佈信功能
