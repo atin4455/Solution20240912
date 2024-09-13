@@ -22,17 +22,22 @@
                     <li>@Html.ActionLink("首頁", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li>@Html.ActionLink("登出", "Logout", "Members", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li><a href="/Members/Index/" class="nav-link">@(User.Identity.Name)</a></li>
-                    <li>@Html.ActionLink("購物車", "Info", "Cart", new { area = "" }, new { @class = "nav-link" })</li>
-                }
-                else
-                {
-                    <li>@Html.ActionLink("登入", "Login", "Members", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("註冊新會員", "Register", "Members", new { area = "" }, new { @class = "nav-link" })</li>
-                }
+
+                <ul class="navbar-nav flex-grow-1">
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("登出", "Logout", "Members", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li><a href="/Members/Index/" class="nav-link">@(User.Identity.Name)</a></li>
+                            <li>@Html.ActionLink("購物車", "Info", "Cart", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("登入", "Login", "Members", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("註冊新會員", "Register", "Members", new { area = "" }, new { @class = "nav-link" })</li>
+                        }
+                    }
+                </ul>
 
             </div>
         </div>

@@ -57,12 +57,13 @@ namespace BookStore.FrontEnd.Site.Controllers
         [HttpPost]
         public ActionResult Login(LoginVM vm)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 Result result = HandleLogin(vm);
                 if (result.IsSuccess)
                 {
                     (string url, HttpCookie cookie) = ProcessLogin(vm.Account);
+                    Response.Cookies.Add(cookie);
                     return Redirect(url);
                 }
                 ModelState.AddModelError(
@@ -74,6 +75,35 @@ namespace BookStore.FrontEnd.Site.Controllers
             return View();
 
         }
+
+        private (string url, HttpCookie cookie) ProcessLogin(string account)
+        {
+            var roles = string.Empty; // 角色欄位，沒有用到角色權限，所以存入空白
+
+            // 建立一張認證憑證
+            var ticket = new FormsAuthenticationTicket(
+                1,                              // 版本別，沒有特別用途
+                account,                        // 使用者帳號
+                DateTime.Now,                   // 發行日
+                DateTime.Now.AddDays(2),        // 到期日
+                false,                          // 是否記住
+                roles,                          // 使用者資料
+                "/"                             // cookie 位置
+            );
+
+            // 將它加密
+            var value = FormsAuthentication.Encrypt(ticket);
+
+            // 存入 cookie
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, value);
+
+            // 取得 return url
+            var url = FormsAuthentication.GetRedirectUrl(account, true); // 第二個引數沒有用途
+
+            return (url, cookie);
+
+        }
+
 
         private Result HandleLogin(LoginVM vm)
         {

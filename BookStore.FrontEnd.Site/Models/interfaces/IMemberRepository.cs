@@ -11,6 +11,7 @@ namespace BookStore.FrontEnd.Site.Models.interfaces
         void Active(int memberId);
         void Create(RegisterDto dto);
         MemberDto Get(int memberId);
+        MemberDto Get(string account);
         bool IsAccountExist(string account);
     }
 }

@@ -73,5 +73,13 @@ namespace BookStore.FrontEnd.Site.Models.Repository
 
             return member != null;
         }
+
+        public MemberDto Get(string account)
+        {
+            var member=_db.Members.FirstOrDefault(x=>x.Account == account);
+            if(member == null) return null;
+
+            return WebApiApplication._mapper.Map<MemberDto>(member);
+        }
     }
 }
