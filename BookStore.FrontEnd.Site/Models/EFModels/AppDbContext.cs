@@ -65,5 +65,7 @@ namespace BookStore.FrontEnd.Site.Models.EFModels
         }
 
         public System.Data.Entity.DbSet<BookStore.FrontEnd.Site.Models.ViewModels.RegisterVm> RegisterVms { get; set; }
+
+        public System.Data.Entity.DbSet<BookStore.FrontEnd.Site.Models.ViewModels.EditProfileVm> EditProfileVms { get; set; }
     }
 }

@@ -172,6 +172,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dtos\ChangepasswordDto.cs" />
     <Compile Include="Models\Dtos\EditProfileDto.cs" />
     <Compile Include="Models\Dtos\LoginDto.cs" />
     <Compile Include="Models\Dtos\MemberDto.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Models\Repository\MemberRepository.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Services\MemberService.cs" />
+    <Compile Include="Models\ViewModels\ChangepasswordVm.cs" />
     <Compile Include="Models\ViewModels\EditProfileVm.cs" />
     <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVm.cs" />
@@ -245,6 +247,11 @@
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -267,6 +274,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\Members\EditProfile.cshtml" />
+    <Content Include="Views\Members\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

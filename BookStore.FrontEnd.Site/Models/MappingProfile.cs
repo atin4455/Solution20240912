@@ -22,6 +22,8 @@ namespace BookStore.FrontEnd.Site.Models
 
             CreateMap<EditProfileVm, EditProfileDto>();
 
+            CreateMap<ChangepasswordVm, ChangepasswordDto>();
+
             //CreateMap<MemberDto, Member>();
         }
     }

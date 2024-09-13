@@ -109,6 +109,33 @@ namespace BookStore.FrontEnd.Site.Controllers
             return View(vm);
         }
 
+        [Authorize]
+        public ActionResult ChangePassword()
+        {
+            var account = User.Identity.Name;
+            MemberDto dto = new MemberRepository().Get(account);
+            ChangepasswordVm vm = WebApiApplication._mapper.Map<ChangepasswordVm>(dto);
+            return View(vm);
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ChangePassword(ChangepasswordVm vm)
+        {
+            string account = User.Identity.Name;
+            Result result = HandleUnknownAction(account, vm);
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("Index");//更新成功,回會員中心頁
+            }
+            ModelState.AddModelError(string.Empty, result.ErrorMessage);
+            return View(vm);
+        }
+
+
+
+
         private Result HandleUnknownAction(string account, EditProfileVm vm)
         {
             var service = new MemberService();
@@ -124,6 +151,27 @@ namespace BookStore.FrontEnd.Site.Controllers
                 return Result.Fail(ex.Message);
             }
         }
+
+
+        //private Result HandleUnknownAction(string account, ChangepasswordVm vm)
+        //{
+        //    var service = new MemberService();
+        //    try
+        //    {
+        //        ChangepasswordDto dto = WebApiApplication._mapper.Map<ChangepasswordDto>(vm);
+        //        service.UpdateProfile(dto);
+
+        //        return Result.Success();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Result.Fail(ex.Message);
+        //    }
+        //}
+
+
+
+
 
         private (string url, HttpCookie cookie) ProcessLogin(string account)
         {
