@@ -25,6 +25,12 @@ modify web.config,add<authentication mode="Forms">
 add LoginVm, LoginDto
 modify MembersController, add Login, Logout Actions
 add Login.cshtml
+
+** 安裝 AutoMapper package
+   add Models/MappingProfile.cs
+   modify Global.asax.cs, add Mapper config
+
+
 modify _Layout.cshtml, add Login ,Logout links
 modify 將 About 改成需要登入才能檢視
 

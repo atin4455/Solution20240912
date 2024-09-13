@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -169,6 +172,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Dtos\LoginDto.cs" />
     <Compile Include="Models\Dtos\MemberDto.cs" />
     <Compile Include="Models\interfaces\IMemberRepository.cs" />
     <Compile Include="Models\Dtos\RegisterDto.cs" />
@@ -181,9 +185,11 @@
     <Compile Include="Models\EFModels\OrderItem.cs" />
     <Compile Include="Models\EFModels\Product.cs" />
     <Compile Include="Models\Infra\HashUtility.cs" />
+    <Compile Include="Models\MappingProfile.cs" />
     <Compile Include="Models\Repository\MemberRepository.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\Services\MemberService.cs" />
+    <Compile Include="Models\ViewModels\LoginVM.cs" />
     <Compile Include="Models\ViewModels\RegisterVm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
