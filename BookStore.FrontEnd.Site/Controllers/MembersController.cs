@@ -1,5 +1,6 @@
 ﻿using BookStore.FrontEnd.Site.Models;
 using BookStore.FrontEnd.Site.Models.Dtos;
+using BookStore.FrontEnd.Site.Models.Repository;
 using BookStore.FrontEnd.Site.Models.Services;
 using BookStore.FrontEnd.Site.Models.ViewModels;
 using System;
@@ -84,6 +85,23 @@ namespace BookStore.FrontEnd.Site.Controllers
             return View();
 
         }
+
+        [Authorize]
+        public ActionResult EditProfile()
+        {
+            var account = User.Identity.Name;
+            MemberDto dto = new MemberRepository().Get(account);
+            EditProfileVm vm = WebApiApplication._mapper.Map<EditProfileVm>(dto);
+            return View(vm);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult EditProfile(EditProfileVm vm)
+        {
+            return View();
+        }
+
 
         private (string url, HttpCookie cookie) ProcessLogin(string account)
         {
